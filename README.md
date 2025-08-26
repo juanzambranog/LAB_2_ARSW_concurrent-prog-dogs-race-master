@@ -4,7 +4,7 @@ Arquitecturas de Software – ARSW
 
 ####Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
 
-#####Parte I – Antes de terminar la clase.
+## Parte I – Antes de terminar la clase.
 
 Creación, puesta en marcha y coordinación de hilos.
 
@@ -28,8 +28,12 @@ Creación, puesta en marcha y coordinación de hilos.
 
         **El tiempo fue de 2 minutos con 3 segundos**
 
-    ![alt text](/img/media/image-5.png)
-    ![alt text](/img/media/image-6.png)
+        ![alt text](/img/media/image-5.png)
+        ![alt text](/img/media/image-6.png)
+
+ 
+
+
 
     2. Para 1 hilo :
 
@@ -38,11 +42,28 @@ Creación, puesta en marcha y coordinación de hilos.
         ![alt text](/img/media/image-8.png)
         ![alt text](/img/media/image-7.png)
 
+
+        
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
+    **Modificamos el metodo run() agragando el bloqueo**
+    ![alt text](/img/media/image-9.png)
+
+    **Agregamos el tiempo que debe durar ene ejecucion (5 segundos) y luego que pase ese tiempo pausamos los hilo y obtenemos la cantidad de numero calculados durante ese tiempo con (totalPrimes) y luego usando (scanner) esperamos y recibimos la accion de (Enter) del usuario para retomar el calculo de los numeros**
+
+    ![alt text](/img/media/image-10.png)
 
 
-#####Parte II 
+    ### **Prueba**
+
+
+    ![alt text](/img/media/image-11.png)
+
+    **Podemos ver que en la prueba en 5 segundos se lograron calcular 32.924 numeros primos**
+
+
+
+## Parte II 
 
 
 Para este ejercicio se va a trabajar con un simulador de carreras de galgos (carpeta parte2), cuya representación gráfica corresponde a la siguiente figura:
