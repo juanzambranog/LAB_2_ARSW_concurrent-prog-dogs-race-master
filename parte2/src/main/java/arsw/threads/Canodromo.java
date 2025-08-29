@@ -1,4 +1,4 @@
-package arsw.threads;
+package src.main.java.arsw.threads;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class Canodromo extends JFrame {
 	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * Carriles del canodromo

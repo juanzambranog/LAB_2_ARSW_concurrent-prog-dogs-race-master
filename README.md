@@ -1,8 +1,16 @@
-Escuela Colombiana de Ingeniería
+## Escuela Colombiana de Ingeniería
 
-Arquitecturas de Software – ARSW
+----
+### Arquitecturas de Software – ARSW
 
-####Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
+----
+### Juan David Zambrano Gonzalez
+
+----
+
+### Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
+
+----
 
 ## Parte I – Antes de terminar la clase.
 
@@ -20,46 +28,42 @@ Creación, puesta en marcha y coordinación de hilos.
 
     ![alt text](/img/media/image-4.png)
 
-2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
+   2. Modifique el programa para que, en lugar de resolver el problema con un solo hilo, lo haga con tres, donde cada uno de éstos hará la tarcera parte del problema original. Verifique nuevamente el funcionamiento, y nuevamente revise el uso de los núcleos del equipo.
 
-        En este caso se realizaran pruebas con 21.000.000 de datos
+           En este caso se realizaran pruebas con 21.000.000 de datos
 
-    1. Para 3 hilos :
+       1. Para 3 hilos :
 
-        **El tiempo fue de 2 minutos con 3 segundos**
+           **El tiempo fue de 2 minutos con 3 segundos**
 
-        ![alt text](/img/media/image-5.png)
-        ![alt text](/img/media/image-6.png)
+           ![alt text](/img/media/image-5.png)
+           ![alt text](/img/media/image-6.png)
 
- 
+       2. Para 1 hilo :
 
-
-
-    2. Para 1 hilo :
-
-        **El tiempo fue de 2 minutos con 12 segundos**
-
-        ![alt text](/img/media/image-8.png)
-        ![alt text](/img/media/image-7.png)
+           **El tiempo fue de 2 minutos con 12 segundos**
+        
+           ![alt text](/img/media/image-8.png)
+           ![alt text](/img/media/image-7.png)
 
 
         
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
     **Modificamos el metodo run() agragando el bloqueo**
+    
     ![alt text](/img/media/image-9.png)
 
     **Agregamos el tiempo que debe durar ene ejecucion (5 segundos) y luego que pase ese tiempo pausamos los hilo y obtenemos la cantidad de numero calculados durante ese tiempo con (totalPrimes) y luego usando (scanner) esperamos y recibimos la accion de (Enter) del usuario para retomar el calculo de los numeros**
 
     ![alt text](/img/media/image-10.png)
 
+### **Prueba**
 
-    ### **Prueba**
 
+![alt text](/img/media/image-11.png)
 
-    ![alt text](/img/media/image-11.png)
-
-    **Podemos ver que en la prueba en 5 segundos se lograron calcular 32.924 numeros primos**
+**Podemos ver que en la prueba en 5 segundos se lograron calcular 32.924 numeros primos**
 
 
 
@@ -82,7 +86,7 @@ logre tomar el ‘1’ será el ganador.
 Al iniciar la aplicación, hay un primer error evidente: los resultados (total recorrido y número del galgo ganador) son mostrados antes de que finalice la carrera como tal. Sin embargo, es posible que una vez corregido esto, haya más inconsistencias causadas por la presencia de condiciones de carrera.
 
 Taller.
-
+----
 1.  Corrija la aplicación para que el aviso de resultados se muestre
     sólo cuando la ejecución de todos los hilos ‘galgo’ haya finalizado.
     Para esto tenga en cuenta:
@@ -91,22 +95,46 @@ Taller.
 
     b.  Puede utilizarse el método join() de la clase Thread para sincronizar el hilo que inicia la carrera, con la finalización de los hilos de los galgos.
 
+
+    Para corregir la aplicacion añadimos un metodo .join() dentro del run() para sincronizar los hilos y que el mensaje del ganador se imprima cuando todos los galgos hayan finalizado.
+---
 2.  Una vez corregido el problema inicial, corra la aplicación varias
     veces, e identifique las inconsistencias en los resultados de las
     mismas viendo el ‘ranking’ mostrado en consola (algunas veces
     podrían salir resultados válidos, pero en otros se pueden presentar
     dichas inconsistencias). A partir de esto, identifique las regiones
     críticas () del programa.
+    
+    #### I. Una de las inconsistencias que podemos ver es que puede haber un empate y dos galgos pueden quedar en primer lugar
+    ![img.png](img/media/img-12.png)
 
+
+----
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
     regiones críticas sólo acceda un hilo a la vez. Verifique los
     resultados.
 
+        I. Usamos metodos de sincronizacion en getGanador, getUltimaPosicionAlcanzada y creamos un metodo que registra las llegadas,
+        garantizando un solo ganador o un solo galgo por posicion desapareciendo asi los "empates".
+    ![img_2.png](img/media/img_13.png)
+    ![img_3.png](img/media/img_14.png)
+
+
+----
 4.  Implemente las funcionalidades de pausa y continuar. Con estas,
     cuando se haga clic en ‘Stop’, todos los hilos de los galgos
     deberían dormirse, y cuando se haga clic en ‘Continue’ los mismos
     deberían despertarse y continuar con la carrera. Diseñe una solución que permita hacer esto utilizando los mecanismos de sincronización con las primitivas de los Locks provistos por el lenguaje (wait y notifyAll).
 
+    #### I. Agregamos en (RegistroLlegada) los metodos (pauseRace, resumeRace, checkPaused)
+    ![img_6.png](img/media/img_15.png)
+    #### II. Luego en (Galgo) agregamos la verificacion (regl.checkPaused();) que verifica si la carrera esta pausada antes de iniciar los recorridos. 
+    ![img_7.png](img/media/img_16.png)
+    #### III. Finalmente en (MainCanodromo) completamos los metodos de los botonoes con (reg.pausedRace();) para parar la carrera y (reg.resumeRace();) pare reanudar la carrera.
+    ![img_8.png](img/media/img_17.png)
+
+![img_4.png](img/media/img_18.png)
+![img_5.png](img/media/img_19.png)
 
 ## Criterios de evaluación
 

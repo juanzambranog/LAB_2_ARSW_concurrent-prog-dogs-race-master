@@ -1,7 +1,12 @@
-package arsw.threads;
+package src.main.java.arsw.threads;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import src.main.java.arsw.threads.Galgo;
+import src.main.java.arsw.threads.Canodromo;
+import src.main.java.arsw.threads.RegistroLlegada;
+
 
 import javax.swing.JButton;
 
@@ -38,8 +43,19 @@ public class MainCanodromo {
                                     galgos[i].start();
 
                                 }
+
+                                for (int i=0; i<can.getNumCarriles();i++){
+                                    try {
+                                        galgos[i].join();
+
+                                    }catch (InterruptedException e) {
+                                        e.printStackTrace();
+
+                                    }
+                                }
+
                                
-				can.winnerDialog(reg.getGanador(),reg.getUltimaPosicionAlcanzada() - 1); 
+				can.winnerDialog(reg.getGanador(),reg.getUltimaPosicionAlcanzada() - 1);
                                 System.out.println("El ganador fue:" + reg.getGanador());
                             }
                         }.start();
@@ -52,6 +68,7 @@ public class MainCanodromo {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        reg.pauseRace();
                         System.out.println("Carrera pausada!");
                     }
                 }
@@ -61,6 +78,7 @@ public class MainCanodromo {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        reg.resumeRace();
                         System.out.println("Carrera reanudada!");
                     }
                 }

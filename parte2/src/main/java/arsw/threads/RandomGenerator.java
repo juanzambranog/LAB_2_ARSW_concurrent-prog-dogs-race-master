@@ -1,4 +1,4 @@
-package arsw.threads;
+package src.main.java.arsw.threads;
 
 import java.util.Random;
 
