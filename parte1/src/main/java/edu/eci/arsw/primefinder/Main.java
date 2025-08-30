@@ -1,4 +1,4 @@
-package edu.eci.arsw.primefinder;
+package src.main.java.edu.eci.arsw.primefinder;
 
 import java.util.Scanner;
 
@@ -6,16 +6,16 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		PrimeFinderThread pft1=new PrimeFinderThread(0,7000000);
-		PrimeFinderThread pft2=new PrimeFinderThread(7000000,14000000);
-		PrimeFinderThread pft3=new PrimeFinderThread(14000000,21000001);
+		PrimeFinderThread pft1=new PrimeFinderThread(0,210000001);
+		/*PrimeFinderThread pft2=new PrimeFinderThread(70000000,140000000);
+		PrimeFinderThread pft3=new PrimeFinderThread(140000000,210000001);*/
 
 		pft1.start();		
-		pft2.start();
-		pft3.start();
+		/*pft2.start();
+		pft3.start();*/
 
 
-		Thread.sleep(5000);
+		/*Thread.sleep(5000);
 
 		pft1.pauseThread();
         pft2.pauseThread();
@@ -41,7 +41,7 @@ public class Main {
 		int finalTotal = pft1.getPrimes().size() + pft2.getPrimes().size() + pft3.getPrimes().size();
         System.out.println(">>> Total de primos encontrados al finalizar: " + finalTotal);
 
-		
+		*/
 		
 	}
 	

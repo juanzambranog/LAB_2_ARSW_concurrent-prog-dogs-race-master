@@ -38,16 +38,26 @@ Creación, puesta en marcha y coordinación de hilos.
 
            ![alt text](/img/media/image-5.png)
            ![alt text](/img/media/image-6.png)
+      2. Para otro dispositivo (Macbook M4) y realizando una modificacion en el (System.out.println(i) del metodo run() de PrimeFinderThread que estaba generando un cuello de botella y no permitia observar de manera correcta los resultados, obtuvimos.)
+         
+         **El tiempo de ejecuacion para 210.000.000 fue de 20 segundos**
+            ![img.png](img/media/img-20.png)
 
-       2. Para 1 hilo :
+      2. Para 1 hilo :
 
-           **El tiempo fue de 2 minutos con 12 segundos**
+          **El tiempo fue de 2 minutos con 12 segundos**
         
-           ![alt text](/img/media/image-8.png)
-           ![alt text](/img/media/image-7.png)
+          ![alt text](/img/media/image-8.png)
+          ![alt text](/img/media/image-7.png)
+      3. Para otro dispositivo (Macbook M4) y realizando una modificacion en el (System.out.println(i) del metodo run() de PrimeFinderThread que estaba generando un cuello de botella y no permitia observar de manera correcta los resultados, obtuvimos.)
+
+         **El tiempo de ejecuacion para 210.000.000 fue de 42 segundos**
+
+         ![img_1.png](img/media/img_21.png)
+    ##### iii. Con lo anterior podemos concluir que con los 3 hilos se presento un mejor rendimiento de mas del doble con respecto a un solo hilo, destacando que **se tuvo que eliminar el print del metodo run() de PrimeFinderThread** ya que como se menciono anteriormente este estaba generando un cuello de botella y a la hora de hacer el ejercicio no se veian resultados significativos o esperados, obteniendo en las pruebas del primer dispositivo solamente una diferencia de 9 segundos entre 1 y 3 hilos, e incluso en otras pruebas realizadas los 3 hilos se demoraron mas que 1 hilo, esto de nuevo al cuello de botella que se estaba presentando. 
 
 
-        
+
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
     **Modificamos el metodo run() agragando el bloqueo**

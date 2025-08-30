@@ -1,4 +1,4 @@
-package edu.eci.arsw.primefinder;
+package src.main.java.edu.eci.arsw.primefinder;
 
 import java.sql.Time;
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ public class PrimeFinderThread extends Thread{
             }					
 			if (isPrime(i)){
 				primes.add(i);
-				System.out.println(i);
+				/*System.out.println(i);*/
 				
 			}
 		}
